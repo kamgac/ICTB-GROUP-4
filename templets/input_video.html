@@ -1,0 +1,37 @@
+{% load embed_video_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>embed videos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="fom">
+    <form action= "" method="post">
+        {% csrf_token %}
+        <h1>add video here</h1>
+        <input type="text" placeholder="Name of the video you want to upload" name ="title" required> <br><br>
+        <input type="text" placeholder="Subtitle link from YouTube (Option)" name="subtitle"><br><br>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>
+
+
+<p>YouTube Video ID: <span id="videoId"></span></p>
+
+<script>
+    //const url = "https://www.youtube.com/watch?v=9VcALQ6EtxM";
+    const VID_REGEX = /(?:youtube(?:-nocookie)?\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const videoID = url.match(VID_REGEX)[1];
+
+    // Set the extracted video ID in the HTML element
+    document.getElementById("videoId").textContent = videoID;
+</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+
+</html>
